@@ -29,7 +29,7 @@ const LandingPage = () => {
   const backgroundImage = recentlyAddedMovies[backgroundIndex]?.imageUrl || 'https://source.unsplash.com/random/1600x900';
 
   return (
-    <div className='pt-16'>
+    <div className='pt-16 py-2'>
       <div className={`relative  h-screen bg-cover bg-center transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="absolute inset-0 pt-40 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl text-white font-bold mb-4">Welcome to Filmpire</h1>

@@ -5,6 +5,8 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { fetchMovies } from "../features/movies/moviesSlice";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const MovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ const MovieDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/movies/${id}`);
+      await axios.delete(`${apiUrl}/api/movies/${id}`);
       dispatch(fetchMovies());
       navigate("/watchlist");
     } catch (err) {
@@ -26,7 +28,7 @@ const MovieDetails = () => {
 
   const handleWatchedToggle = async () => {
     try {
-      await axios.put(`/api/movies/${id}`, { watched: !movie.watched });
+      await axios.put(`${apiUrl}/api/movies/${id}`, { watched: !movie.watched });
       dispatch(fetchMovies());
     } catch (err) {
       console.error(err);
@@ -36,7 +38,7 @@ const MovieDetails = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/movies/${id}`, { rating, review });
+      await axios.put(`${apiUrl}/api/movies/${id}`, { rating, review });
       dispatch(fetchMovies());
     } catch (err) {
       console.error(err);

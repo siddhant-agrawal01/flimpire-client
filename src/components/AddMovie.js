@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { fetchMovies } from "../features/movies/moviesSlice";
 
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const AddMovie = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const AddMovie = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/movies", formData);
+      await axios.post(`${apiUrl}/api/movies`, formData);
       dispatch(fetchMovies());
       navigate("/watchlist");
     } catch (err) {

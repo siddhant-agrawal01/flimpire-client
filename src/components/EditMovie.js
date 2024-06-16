@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchMovies } from "../features/movies/moviesSlice";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const EditMovie = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -44,7 +46,7 @@ const EditMovie = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/movies/${id}`, formData);
+      await axios.put(`${apiUrl}/api/movies/${id}`, formData);
       dispatch(fetchMovies());
       navigate("/");
     } catch (err) {
