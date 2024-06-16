@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
 const LandingPage = () => {
-  const movies = useSelector((state) => state.movies.movies);
+  const movies = useSelector((state) => state.movies.movies || []);
   const recentlyAddedMovies = movies.slice(0, 5); 
 
   const [backgroundIndex, setBackgroundIndex] = useState(0);
