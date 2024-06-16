@@ -36,8 +36,8 @@ const AddMovie = () => {
   };
 
   return (
-    <div className="flex justify-center items-center pt-24 px-2   h-screen">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full  max-w-md">
+    <div className="flex justify-center items-center pt-40 px-2   h-screen">
+      <div className="bg-gray-800 px-8 rounded-lg shadow-lg w-full py-8 max-w-md">
         <h1 className="text-2xl font-bold text-white mb-4">Add Movie</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

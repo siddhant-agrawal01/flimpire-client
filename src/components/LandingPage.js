@@ -7,7 +7,9 @@ import MovieCard from './MovieCard';
 
 const LandingPage = () => {
   const movies = useSelector((state) => state.movies.movies || []);
-  const recentlyAddedMovies = movies.slice(0, 5); 
+  // const recentlyAddedMovies = movies.slice(0, 5); 
+  const recentlyAddedMovies = Array.isArray(movies) ? movies.slice(0, 5) : [];
+
 
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const [fade, setFade] = useState(false);
@@ -27,8 +29,8 @@ const LandingPage = () => {
   const backgroundImage = recentlyAddedMovies[backgroundIndex]?.imageUrl || 'https://source.unsplash.com/random/1600x900';
 
   return (
-    <div>
-      <div className={`relative pt-40 h-screen bg-cover bg-center transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className='pt-16'>
+      <div className={`relative  h-screen bg-cover bg-center transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="absolute inset-0 pt-40 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl text-white font-bold mb-4">Welcome to Filmpire</h1>
           <p className="text-xl text-gray-200 mb-8">Your ultimate movie watchlist manager</p>
